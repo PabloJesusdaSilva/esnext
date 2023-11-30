@@ -10,7 +10,8 @@ const generateNumbersBetween = (min, max, time) => {
       }, time)
    })
 }
-4
+
+
 const generateNumbers = () => {
    return Promise.all([
       generateNumbersBetween(1, 70, 1000),
@@ -21,4 +22,11 @@ const generateNumbers = () => {
    ])
 }
 
-generateNumbers().then(numbers => console.log(numbers))
+console.time('promise');
+
+generateNumbers()
+   .then(console.log)
+   .then(() => {
+      console.timeLog('promise');
+      console.timeEnd('promise');
+   })
